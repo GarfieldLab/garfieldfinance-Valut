@@ -653,18 +653,6 @@ contract Controller {
     }
 
     /**
-     * @dev 强制设置策略,不进行取款
-     * @param _token token地址
-     * @param _strategy 策略地址
-     * @notice 只能由治理地址或者策略员地址设置,需要批准策略员
-     */
-    function setStrategyWithoutWithdraw(address _token, address _strategy) public {
-        require(msg.sender == strategist || msg.sender == governance, "!strategist");
-        require(approvedStrategies[_token][_strategy] == true, "!approved");
-        strategies[_token] = _strategy;
-    }
-
-    /**
      * @dev 设置策略
      * @param _token token地址
      * @param _strategy 策略地址
